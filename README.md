@@ -13,7 +13,7 @@ The project was created with Code::Blocks
 
 The file SimuVar.conf has the parameters to the system.
     Important to note the keywords aren't case-sensitive and may be written without space.
-    If one keyword doesn't existor has no value then the system will assume as zero.
+    If one keyword doesn't exist or has no value then the system will assume it as zero.
     the character '=' is part of the weyword
     
 Library Functions aren't included.
