@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="סימולציה של גידול האוכלוסייה והשונות הגנטית" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="~/Desktop/bin/SimuVar" prefix_auto="1" extension_auto="1" />
+				<Option object_output="~/Desktop/obj/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-pedantic" />
+					<Add option="-Wextra" />
+					<Add option="-Wall" />
+					<Add option="-std=c++1z" />
+					<Add option="-m64" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="-m64" />
+					<Add option="-lstdc++fs" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="../Is_Number/Is_Number.cpp" />
+		<Unit filename="../Is_Number/Is_Number.h" />
+		<Unit filename="../ReadConfigurations/ReadConfigurations.cpp" />
+		<Unit filename="../ReadConfigurations/ReadConfigurations.h" />
+		<Unit filename="Main.cpp" />
+		<Unit filename="Main_Load_Environment.cpp" />
+		<Unit filename="ShowData.h" />
+		<Unit filename="SimuVar_DataBase.h" />
+		<Unit filename="SimuVar_Environment.h" />
+		<Unit filename="SimuVar_Life.cpp" />
+		<Unit filename="SimuVar_Life.h" />
+		<Unit filename="SimuVar_Life_Deep.cpp" />
+		<Unit filename="SimuVar_Person.cpp" />
+		<Unit filename="SimuVar_Person.h" />
+		<Unit filename="SimuVar_Person_Relationships.cpp" />
+		<Unit filename="SimuVar_Statistics.cpp" />
+		<Unit filename="SimuVar_Statistics.h" />
+		<Unit filename="SimuVar_Statistics_Results.h" />
+		<Unit filename="SimuVar_Template_IsInRange.h" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+			<envvars />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
