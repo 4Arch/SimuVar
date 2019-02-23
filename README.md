@@ -3,11 +3,11 @@ This project is just a demonstration of c++ coding
 
 Menashe Rosemberg                   Israel
 Copyright (c) 2019     All rights reserved
+
 Redistribution and use of source or/and binary forms, with or without modification are not permitted,
 unless with an express Author's permission.
 Software distributed under the License is distributed on an "AS IS" BASIS,
 NO WARRANTIES OR CONDITIONS OF ANY KIND, explicit or implicit.
-
 
 The project was created with Code::Blocks
 
@@ -16,4 +16,4 @@ The file SimuVar.conf has the parameters to the system.
     If one keyword doesn't exist or has no value then the system will assume it as zero.
     the character '=' is part of the keyword
     
-Library Functions aren't included.
+The functions is_number and ReadConfigurations aren't included because they have their own projects.
