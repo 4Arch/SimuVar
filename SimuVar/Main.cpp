@@ -8,9 +8,6 @@
     Menashe Rosemberg   Israel +972-52-323-0538
     Copyright (c) 2019     All rights reserved.
 
-    Redistribution and use of source or/and binary forms, with or without modification are not permitted,
-    unless with an express Author's permission.
-
     Software distributed under the License is distributed on an "AS IS" BASIS,
     NO WARRANTIES OR CONDITIONS OF ANY KIND, explicit or implicit.
 **/
