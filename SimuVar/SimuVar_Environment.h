@@ -9,7 +9,8 @@
     Copyright (c) 2019     All rights reserved.
 
     Software distributed under the License is distributed on an "AS IS" BASIS,
-    NO WARRANTIES OR CONDITIONS OF ANY KIND, explicit or implicit.**/
+    NO WARRANTIES OR CONDITIONS OF ANY KIND, explicit or implicit.
+**/
 /*
 UPDATE
         1. Add a module to read this data from file.
