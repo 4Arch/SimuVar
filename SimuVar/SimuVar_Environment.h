@@ -13,9 +13,9 @@
 **/
 /*
 UPDATE
-        1. Add a module to read this data from file.
+        1. Include parallelism (maybe promise)
         2. Consider the siblings as Relative
-        3. Person -> KnownPerson may be change from FullGene to Pointer to Person
+        3. Person -> KnownPerson may be changed from FullGene to Pointer to Person
 */
 #ifndef ENVIRONMENT_H
 #define ENVIRONMENT_H
