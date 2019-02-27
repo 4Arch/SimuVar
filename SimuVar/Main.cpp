@@ -1,7 +1,7 @@
 /**
     File    : Main.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.02.10            Version: 20190219.1
+    Created : 2019.02.10            Version: 20190219.2
 
     Simulation of Population Growth and Genetic Variation (סימולציה של גידול האוכלוסייה והשונות הגנטית)
 
@@ -41,7 +41,7 @@ int main() {
 
     } catch (const short Exc) {
             switch(Exc) {
-                case CONFFILEDOESNTEXISTS: cerr << "Configuration file doesn't exists.\n" << endl; break;
+                case CONFFILEDOESNTEXISTS: cerr << "Configuration file doesn't exist.\n" << endl; break;
                 case CONFFILENOTGOOD     : cerr << "Error reading the configuration file.\n" << endl;
             }
 
