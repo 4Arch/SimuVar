@@ -24,7 +24,7 @@ constexpr bool GROWTH   = true;
 constexpr bool DECREASE = false;
 
 constexpr float Average(float CurrValue, float newUnit, float Pop) {
-          return (CurrValue * Pop + newUnit) / (Pop + 1);
+          return (CurrValue * Pop + newUnit) / (Pop + 1.0);
 }
 
 constexpr float Average(float Value, float Pop) {
