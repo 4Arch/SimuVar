@@ -1,7 +1,7 @@
 /**
     File    : SimuVar_Person_Relationships.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.02.11            Version: 20190218.3
+    Created : 2019.02.11            Version: 20190227.1
 
     Simulation of Population Growth and Genetic Variation (סימולציה של גידול האוכלוסייה והשונות הגנטית)
 
@@ -13,9 +13,6 @@
 **/
 #include "SimuVar_Person.h"
 #include "SimuVar_Template_IsInRange.h"
-
-#include <vector>
-#include <functional>
 
 bool Person::GetAPartner(FullGene newPartner) {
      if (this->PartnerGenes.has_value()) return false;
@@ -65,10 +62,14 @@ void Person::SayGoodByeTo(const FullGene& ThisSoul) {
      if (this->PartnerGenes.has_value() && ThisSoul == this->PartnerGenes)
         this->PartnerGenes.reset();
      else {
-        if (auto IMissU = this->FindKnownPerson(ThisSoul, FriendsList); IMissU != FriendsList.cend())
-            this->FriendsList.erase(IMissU);
-        if (auto IMissU = this->FindKnownPerson(ThisSoul, Relatives); IMissU != Relatives.cend())
-            this->Relatives.erase(IMissU);
+          auto DelRelative = [&]() {
+               if (auto IMissU = this->FindKnownPerson(ThisSoul, Relatives); IMissU != Relatives.cend())
+               this->Relatives.erase(IMissU); };
+
+          thread(DelRelative).detach();
+
+          if (auto IMissU = this->FindKnownPerson(ThisSoul, FriendsList); IMissU != FriendsList.cend())
+             this->FriendsList.erase(IMissU);
      }
 }
 

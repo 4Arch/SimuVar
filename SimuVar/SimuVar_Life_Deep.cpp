@@ -95,7 +95,7 @@ inline BookOfLife_IdxIIt LifeGrowth::FindIdx(const FullGene& Genes2Search) const
     return Idx_Population.cend();
 }
 
-void LifeGrowth::DeceaseTo(Person& Individual) {
+void LifeGrowth::DeceaseTo(const Person& Individual) {
      if (Individual.MyTimeIsCome())
         SoulsDeparture.emplace_back(Individual.Genes());
 }
@@ -103,18 +103,14 @@ void LifeGrowth::DeceaseTo(Person& Individual) {
 void LifeGrowth::LastGoodbye() {
      for (auto& SayGoodbye : SoulsDeparture) {
          auto Idx = FindIdx(SayGoodbye);
-         Statistics.DecreasePopulation((*Idx->Point2Person));
+         Statistics.DecreasePopulation(*Idx->Point2Person);
          Population.erase(Idx->Point2Person);
          Idx_Population.erase(Idx);
      }
 
      for (auto& Individual : Population)
-         for (auto& ThisSoul : SoulsDeparture) {
-//            DEBUG("Say Goodbye to", ThisSoul.Sequence);
+         for (auto& ThisSoul : SoulsDeparture)
              Individual.SayGoodByeTo(ThisSoul);
-         }
-
-//      DEBUG("SayGoodBye", "Is done");
 
      SoulsDeparture.clear();
 }

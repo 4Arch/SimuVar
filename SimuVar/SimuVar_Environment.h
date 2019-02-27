@@ -12,10 +12,8 @@
     NO WARRANTIES OR CONDITIONS OF ANY KIND, explicit or implicit.
 **/
 /*
-UPDATE
-        1. Include parallelism (maybe promise)
-        2. Consider the siblings as Relative
-        3. Person -> KnownPerson may be changed from FullGene to Pointer to Person
+TO UPGRADE
+        1. Consider the siblings as Relative
 */
 #ifndef ENVIRONMENT_H
 #define ENVIRONMENT_H
@@ -32,8 +30,8 @@ constexpr uint8_t GeneSubSegmentSize = sizeof(GeneType)*2;      //Every segment 
 
 struct Environment {
        uint32_t NumberOfGenerations = 10'000;
-       Meet InitialPopulation = 2;                                          //Minimum 2 Maximum 255
-       Meet MeetingMaxPerGeneration = 20;                                   //Minimum 1 Maximum 255
+       Meet InitialPopulation = 23;                                         //Minimum 2 Maximum 255
+       Meet MeetingMaxPerGeneration = 5;                                    //Minimum 1 Maximum 255
        LifeTime MinAgeOfFertility = 18;
        LifeTime MaxLifeTime[2] = {110, 120};                                //Male-Female
        float ChildMortalityRate = 0.05;

@@ -50,7 +50,7 @@ struct LifeGrowth {
 
         void FriendsTo(Person& Individual);
         void FamilyTo(Person& Individual);
-        void DeceaseTo(Person& Individual);
+        void DeceaseTo(const Person& Individual);
         void LastGoodbye();
 
         inline NOfTwins IamDTwinNumber(const GeneType ChildGenes) const;

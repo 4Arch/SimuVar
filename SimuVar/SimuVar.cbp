@@ -23,6 +23,7 @@
 					<Add option="-s" />
 					<Add option="-m64" />
 					<Add option="-lstdc++fs" />
+					<Add option="-pthread" />
 				</Linker>
 			</Target>
 		</Build>

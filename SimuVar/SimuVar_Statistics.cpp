@@ -1,7 +1,7 @@
 /**
     File    : SimuVar_Statistics.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.02.15            Version: 20190218.2
+    Created : 2019.02.15            Version: 20190227.1
 
     Simulation of Population Growth and Genetic Variation (סימולציה של גידול האוכלוסייה והשונות הגנטית)
 
@@ -48,16 +48,17 @@ Status DataStatistics::Current(const YearType CurrGeneration, const BookOfLife& 
        STATUS.Av_Friends            = Average(Tot_Friends,   Population.size());
        STATUS.Av_Relatives          = Average(Tot_Relatives, Population.size());
 
-       STATUS.Av_Age_Womens_Alive   = Average(Tot_Living_Women_Ages, Population.size());
-       STATUS.Av_Age_Mens_Alive     = Average(Tot_Living_Men_Ages,   Population.size());
+       STATUS.Av_Age_Womens_Alive   = Average(Tot_Living_Women_Ages                      , STATUS.Tot_Women_Alive);
+       STATUS.Av_Age_Mens_Alive     = Average(Tot_Living_Men_Ages                        , STATUS.Tot_Men_Alive);
        STATUS.Av_Livings_Ages       = Average(Tot_Living_Women_Ages + Tot_Living_Men_Ages, Population.size());
 
-       STATUS.Av_Women_Alive        = Average(STATUS.Tot_Women_Alive, STATUS.Tot_Women_Alive + STATUS.Tot_Men_Alive);
-       STATUS.Av_Men_Alive          = Average(STATUS.Tot_Men_Alive,   STATUS.Tot_Women_Alive + STATUS.Tot_Men_Alive);
-       STATUS.Av_Women_Souls        = Average(STATUS.Tot_Women_Souls, STATUS.Tot_Women_Souls + STATUS.Tot_Men_Souls);
-       STATUS.Av_Men_Souls          = Average(STATUS.Tot_Men_Souls,   STATUS.Tot_Women_Souls + STATUS.Tot_Men_Souls);
+       STATUS.Av_Women_Alive        = Average(STATUS.Tot_Women_Alive                     , STATUS.Tot_Women_Alive + STATUS.Tot_Men_Alive);
+       STATUS.Av_Men_Alive          = Average(STATUS.Tot_Men_Alive                       , STATUS.Tot_Women_Alive + STATUS.Tot_Men_Alive);
 
-       STATUS.Av_Couples            = Average(Tot_Couples, Population.size());
+       STATUS.Av_Couples            = Average(Tot_Couples                                , Population.size());
+
+       STATUS.Av_Women_Souls        = Average(STATUS.Tot_Women_Souls                     , STATUS.Tot_Women_Souls + STATUS.Tot_Men_Souls);
+       STATUS.Av_Men_Souls          = Average(STATUS.Tot_Men_Souls                       , STATUS.Tot_Women_Souls + STATUS.Tot_Men_Souls);
 
        this->UpdateFinalStatus();
 
@@ -106,11 +107,11 @@ void DataStatistics::DecreasePopulation(const Person& Soul) {
      this->Update_GenesDB(Soul, DECREASE);
 
      if (Soul.isFemale()) {
-        STATUS.Tot_Women_Souls++;
         STATUS.Av_Age_Womens_Souls = Average(STATUS.Av_Age_Womens_Souls, Soul.Age(), STATUS.Tot_Women_Souls);
+        STATUS.Tot_Women_Souls++;
      } else {
+        STATUS.Av_Age_Mens_Souls   = Average(STATUS.Av_Age_Mens_Souls  , Soul.Age(), STATUS.Tot_Men_Souls);
         STATUS.Tot_Men_Souls++;
-        STATUS.Av_Age_Mens_Souls = Average(STATUS.Av_Age_Mens_Souls, Soul.Age(), STATUS.Tot_Men_Souls);
      }
 }
 

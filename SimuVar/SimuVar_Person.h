@@ -17,10 +17,13 @@
 #include "SimuVar_Environment.h"
 
 #include <set>
+#include <vector>
+#include <thread>
 #include <chrono>
 #include <random>
 #include <climits>
 #include <optional>
+#include <functional>
 
 using namespace std;
 
