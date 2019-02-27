@@ -43,7 +43,7 @@ auto Person::FindKnownPerson(const FullGene& Genes2Search, const TContainer<TObj
 }
 
 bool Person::MeetNewFriend(const FullGene& newFriend) {
-     if (newFriend != this->Genes &&
+     if (newFriend != this->pGenes &&
          FindKnownPerson(newFriend, this->FriendsList) == this->FriendsList.cend() &&
          FindKnownPerson(newFriend, this->Relatives) == this->Relatives.cend()) {
         this->FriendsList.emplace(newFriend);
@@ -54,7 +54,7 @@ bool Person::MeetNewFriend(const FullGene& newFriend) {
 }
 
 void Person::MeetNewRelative(const FullGene& newRelative) {
-     if (newRelative != this->Genes && FindKnownPerson(newRelative, this->Relatives) == this->Relatives.cend()) {
+     if (newRelative != this->pGenes && FindKnownPerson(newRelative, this->Relatives) == this->Relatives.cend()) {
         this->Relatives.emplace(newRelative);
         if (auto NotaFriend = FindKnownPerson(newRelative, this->FriendsList); NotaFriend != this->FriendsList.cend())
             this->FriendsList.erase(NotaFriend);
@@ -108,7 +108,7 @@ GeneType Person::AnOffspringWasBorn(GeneType Father) {
          GeneType ChildGenes = 0;
 
          for (GeneType SubSegment = 0; SubSegment < sizeof(GeneType)*CHAR_BIT; SubSegment += GeneSubSegmentSize)
-             ChildGenes += SegExtractor((GeneticVariation(RandBase)?this->Genes.Sequence:Father), SubSegment)   //Choose which Segment
+             ChildGenes += SegExtractor((GeneticVariation(RandBase)?this->pGenes.Sequence:Father), SubSegment)   //Choose which Segment
                           << SubSegment;                                                                        //Move the segment to its position
 
          return ChildGenes;

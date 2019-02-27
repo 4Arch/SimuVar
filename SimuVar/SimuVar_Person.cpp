@@ -1,7 +1,7 @@
 /**
     File    : SimuVar_Person.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.02.10            Version: 20190215.4
+    Created : 2019.02.10            Version: 20190215.5
 
     Simulation of Population Growth and Genetic Variation (סימולציה של גידול האוכלוסייה והשונות הגנטית)
 
@@ -14,7 +14,7 @@
 #include "SimuVar_Person.h"
 
 Person::Person(const GeneType newPerson, const NOfTwins TwinNumber, const Environment& LifeLimits) :
-        Genes                           (newPerson, TwinNumber),
+        pGenes                          (newPerson, TwinNumber),
         LiLi                            (LifeLimits),
         RandBase                        (chrono::steady_clock::now().time_since_epoch().count()),
         myMaxLifeTime                   (uniform_int_distribution<LifeTime>(0, LiLi.MaxLifeTime[isFemale()])(RandBase)),
@@ -32,6 +32,11 @@ Person::Person(const GeneType newPerson, const NOfTwins TwinNumber, const Enviro
 
 Person::~Person() = default;
 
+
+FullGene Person::Genes() const {
+        return pGenes;
+}
+
 void Person::GetsOld() {
      if (this->Ages >= LiLi.MinAgeOfFertility) {
         Idx_Fertility  *= 1-DecayFertility(RandBase);
@@ -41,7 +46,7 @@ void Person::GetsOld() {
      Ages++;
 }
 
-bool Person::isFemale() const { return (this->Genes.Sequence & (1 << 0)); }
+bool Person::isFemale() const { return (this->pGenes.Sequence & (1 << 0)); }
 bool Person::isFemale(const GeneType& Gene2Check) const { return (Gene2Check & (1 << 0)); }
 bool Person::CanIGetPregnant() const { return this->isFemale() && this->Ages >= LiLi.MinAgeOfFertility; }
 

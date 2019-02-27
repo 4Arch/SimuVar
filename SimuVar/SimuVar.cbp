@@ -37,6 +37,7 @@
 		<Unit filename="Main.cpp" />
 		<Unit filename="Main_Load_Environment.cpp" />
 		<Unit filename="ShowData.h" />
+		<Unit filename="SimuVar.conf" />
 		<Unit filename="SimuVar_DataBase.h" />
 		<Unit filename="SimuVar_Environment.h" />
 		<Unit filename="SimuVar_Life.cpp" />

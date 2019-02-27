@@ -1,7 +1,7 @@
 /**
     File    : SimuVar_Life_Deep.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.02.11            Version: 20190217.1
+    Created : 2019.02.11            Version: 20190217.3
 
     Simulation of Population Growth and Genetic Variation (סימולציה של גידול האוכלוסייה והשונות הגנטית)
 
@@ -20,8 +20,8 @@ void LifeGrowth::FriendsTo(Person& Individual) {
 
          for (Meet FriendNumber = 0; FriendNumber < LiLi.MeetingMaxPerGeneration; ++FriendNumber) {
              auto NewFriend = next(Population.begin(), TheNewFriendIs(FindOutAFriend));
-             if (Individual.MeetNewFriend(NewFriend->Genes))
-                 NewFriend->MeetNewFriend(Individual.Genes);
+             if (Individual.MeetNewFriend(NewFriend->Genes()))
+                 NewFriend->MeetNewFriend(Individual.Genes());
          }
      }
 }
@@ -47,8 +47,8 @@ void LifeGrowth::FamilyTo(Person& Individual) {
      } else if (auto Bride = Individual.MayIPropose()) {
 
         if (auto BrideLocation = this->FindPeople(Bride.value()); BrideLocation != Population.cend() &&
-           BrideLocation->GetAPartner(Individual.Genes))
-           Individual.GetAPartner(BrideLocation->Genes);
+           BrideLocation->GetAPartner(Individual.Genes()))
+           Individual.GetAPartner(BrideLocation->Genes());
      }
 }
 
@@ -65,12 +65,12 @@ void LifeGrowth::GrowingDPopulation(const GeneType ChildGenesSeq, Person& Mother
 
      this->AdamVeHavah(ChildGenesSeq);
 
-     Population.front().MeetNewRelative(Mother.Genes);
+     Population.front().MeetNewRelative(Mother.Genes());
      Population.front().MeetNewRelative(Father);
 
-     Mother.MeetNewRelative(Population.front().Genes);
+     Mother.MeetNewRelative(Population.front().Genes());
      if (auto theFather = this->FindPeople(Father); theFather != Population.cend())
-        theFather->MeetNewRelative(Population.front().Genes);
+        theFather->MeetNewRelative(Population.front().Genes());
 }
 
 inline NOfTwins LifeGrowth::IamDTwinNumber(const GeneType ChildGenesSeq) const {
@@ -97,7 +97,7 @@ inline BookOfLife_IdxIIt LifeGrowth::FindIdx(const FullGene& Genes2Search) const
 
 void LifeGrowth::DeceaseTo(Person& Individual) {
      if (Individual.MyTimeIsCome())
-        SoulsDeparture.emplace_back(Individual.Genes);
+        SoulsDeparture.emplace_back(Individual.Genes());
 }
 
 void LifeGrowth::LastGoodbye() {

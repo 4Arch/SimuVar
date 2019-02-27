@@ -1,7 +1,7 @@
 /**
     File    : SimuVar_Person.h
     Author  : Menashe Rosemberg
-    Created : 2019.02.10            Version: 20190217.2
+    Created : 2019.02.10            Version: 20190217.3
 
     Simulation of Population Growth and Genetic Variation (סימולציה של גידול האוכלוסייה והשונות הגנטית)
 
@@ -47,9 +47,8 @@ struct Person {
        Person(const GeneType newPerson, const NOfTwins TwinNumber, const Environment& LifeLimits);
       ~Person();
 
-    const FullGene Genes;
-
     //itself
+    FullGene Genes() const;
     void GetsOld();
     bool isFemale() const;                              //First bit of myGenes indicate the gender
     optional<GeneType> GiveBirth(GeneType Father);
@@ -72,6 +71,9 @@ struct Person {
     void SayGoodByeTo(const FullGene& ThisSoul);
 
     private:
+
+        const FullGene pGenes;
+
         const Environment& LiLi;
         mt19937 RandBase;
         LifeTime myMaxLifeTime;
