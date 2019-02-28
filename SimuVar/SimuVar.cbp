@@ -35,6 +35,7 @@
 		<Unit filename="../Is_Number/Is_Number.h" />
 		<Unit filename="../ReadConfigurations/ReadConfigurations.cpp" />
 		<Unit filename="../ReadConfigurations/ReadConfigurations.h" />
+		<Unit filename="../SpinLock/SpinLock.h" />
 		<Unit filename="Main.cpp" />
 		<Unit filename="Main_Load_Environment.cpp" />
 		<Unit filename="ShowData.h" />
