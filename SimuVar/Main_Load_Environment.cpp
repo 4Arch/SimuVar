@@ -1,7 +1,7 @@
 /**
     File    : Main.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.02.19            Version: 20190219.1
+    Created : 2019.02.19            Version: 20190219.2
 
     Simulation of Population Growth and Genetic Variation (סימולציה של גידול האוכלוסייה והשונות הגנטית)
 
@@ -11,7 +11,7 @@
     Software distributed under the License is distributed on an "AS IS" BASIS,
     NO WARRANTIES OR CONDITIONS OF ANY KIND, explicit or implicit.
 **/
-#include "../ReadConfigurations/ReadConfigurations.h"
+#include "../../C++_lib/ReadConfigurations/ReadConfigurations.h"
 #include "SimuVar_Environment.h"
 
 #include <vector>

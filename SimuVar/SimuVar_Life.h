@@ -19,7 +19,7 @@
 #ifndef LIFEGROWTH_H
 #define LIFEGROWTH_H
 
-#include "../SpinLock/SpinLock.h"
+#include "../../C++_lib/SpinLock/SpinLock.h"
 #include "SimuVar_Template_IsInRange.h"
 #include "SimuVar_Environment.h"
 #include "SimuVar_DataBase.h"

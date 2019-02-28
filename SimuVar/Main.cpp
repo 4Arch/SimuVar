@@ -11,7 +11,7 @@
     Software distributed under the License is distributed on an "AS IS" BASIS,
     NO WARRANTIES OR CONDITIONS OF ANY KIND, explicit or implicit.
 **/
-#include "../ReadConfigurations/ReadConfigurations.h"
+#include "../../C++_lib/ReadConfigurations/ReadConfigurations.h"
 #include "SimuVar_Life.h"
 #include "SimuVar_Statistics_Results.h"
 #include "ShowData.h"
