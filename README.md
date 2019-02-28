@@ -8,4 +8,4 @@ The file SimuVar.conf has the parameters to the system.
 
 The project was created with Code::Blocks.
 
-The functions is_number and ReadConfigurations aren't included because they have their own projects.
+The functions is_number, ReadConfigurations and SpinLock aren't included because they have their own projects.
