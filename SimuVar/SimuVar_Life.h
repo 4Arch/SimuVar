@@ -1,7 +1,7 @@
 /**
     File    : SimuVar_Life.h
     Author  : Menashe Rosemberg
-    Created : 2019.02.11            Version: 20190218.1
+    Created : 2019.02.11            Version: 20190228.1
 
     Simulation of Population Growth and Genetic Variation (סימולציה של גידול האוכלוסייה והשונות הגנטית)
 
@@ -18,6 +18,7 @@
 #ifndef LIFEGROWTH_H
 #define LIFEGROWTH_H
 
+#include "../SpinLock/SpinLock.h"
 #include "SimuVar_Template_IsInRange.h"
 #include "SimuVar_Environment.h"
 #include "SimuVar_DataBase.h"
@@ -25,6 +26,8 @@
 
 #include <chrono>
 #include <random>
+#include <thread>
+#include <iterator>
 
 using namespace std;
 
@@ -47,10 +50,11 @@ struct LifeGrowth {
         BookOfLife Population;
         BookOfLife_Idx Idx_Population;
         NOTSigningUp SoulsDeparture;
+        SpinLock SoulDepProtection;
 
+        void EveryOneGetOldAndDecease();
         void FriendsTo(Person& Individual);
         void FamilyTo(Person& Individual);
-        void DeceaseTo(const Person& Individual);
         void LastGoodbye();
 
         inline NOfTwins IamDTwinNumber(const GeneType ChildGenes) const;

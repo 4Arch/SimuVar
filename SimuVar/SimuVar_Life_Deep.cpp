@@ -1,7 +1,7 @@
 /**
     File    : SimuVar_Life_Deep.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.02.11            Version: 20190217.3
+    Created : 2019.02.11            Version: 20190228.1
 
     Simulation of Population Growth and Genetic Variation (סימולציה של גידול האוכלוסייה והשונות הגנטית)
 
@@ -13,6 +13,43 @@
 **/
 
 #include "SimuVar_Life.h"
+
+void LifeGrowth::EveryOneGetOldAndDecease() {
+
+     auto GetOldAndDecease = [&](BookOfLife::iterator Individual, const BookOfLife::iterator End) {
+          for (; Individual != End; ++Individual) {
+              Individual->GetsOld();
+              if (Individual->MyTimeIsCome()) {
+                 SoulDepProtection.lock();
+                 SoulsDeparture.emplace_back(Individual->Genes());
+                 SoulDepProtection.unlock();
+              }
+          }
+     };
+
+     uint16_t Blocks = 2;
+     if (Population.size() % 4 == 0)
+        Blocks = 4;
+     else if (Population.size() % 3 == 0)
+             Blocks = 3;
+
+     vector<thread> GOaD;
+     auto PosI = Population.begin();
+     auto NOfPersons = Population.size() / Blocks;
+
+     Blocks = 0;
+     while (PosI != Population.end()) {
+           auto PosF = (Population.size() > distance(PosI, Population.begin()) + NOfPersons)?
+                        next(PosI, NOfPersons):
+                        Population.end();
+
+           GOaD.emplace_back(GetOldAndDecease, PosI , PosF);
+           PosI = PosF;
+     }
+
+     for (auto& IIt : GOaD)
+         IIt.join();
+}
 
 void LifeGrowth::FriendsTo(Person& Individual) {
      if (Population.size() > 1) {
@@ -93,11 +130,6 @@ inline BookOfLife_IdxIIt LifeGrowth::FindIdx(const FullGene& Genes2Search) const
                 return TwinTwin;   //Population
 
     return Idx_Population.cend();
-}
-
-void LifeGrowth::DeceaseTo(const Person& Individual) {
-     if (Individual.MyTimeIsCome())
-        SoulsDeparture.emplace_back(Individual.Genes());
 }
 
 void LifeGrowth::LastGoodbye() {

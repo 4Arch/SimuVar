@@ -1,7 +1,7 @@
 /**
     File    : SimuVar_Life.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.02.11            Version: 20190217.2
+    Created : 2019.02.11            Version: 20190228.1
 
     Simulation of Population Growth and Genetic Variation (סימולציה של גידול האוכלוסייה והשונות הגנטית)
 
@@ -47,11 +47,11 @@ Status LifeGrowth::Begin(Environment LifeLimits) {
 
 Status LifeGrowth::NextGeneration() {
 
+       EveryOneGetOldAndDecease();
+
        for (auto& EveryOne : Population) {
-            EveryOne.GetsOld();
             FriendsTo(EveryOne);
             FamilyTo(EveryOne);
-            DeceaseTo(EveryOne);
        }
 
        LastGoodbye();

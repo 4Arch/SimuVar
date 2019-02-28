@@ -1,7 +1,7 @@
 /**
     File    : SimuVar_Statistics.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.02.15            Version: 20190227.1
+    Created : 2019.02.15            Version: 20190227.2
 
     Simulation of Population Growth and Genetic Variation (סימולציה של גידול האוכלוסייה והשונות הגנטית)
 
@@ -96,10 +96,10 @@ void DataStatistics::Update_GenesDB(const Person& Child, const bool GrowthDecrea
             Search->second++;
      } else
         if (auto Search = GenesAlive.find(Child.Genes().Sequence); Search != GenesAlive.cend()) {
-            if (Search->second > 2)
-                Search->second--;
-            else
+            if (Search->second == 1)
                 GenesAlive.erase(Search);
+            else
+                Search->second--;
         }
 }
 
