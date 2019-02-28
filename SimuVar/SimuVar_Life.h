@@ -12,8 +12,9 @@
     NO WARRANTIES OR CONDITIONS OF ANY KIND, explicit or implicit.
 **/
 /*
-    UPDATES:
+    UPGRADES:
     1. Better randomization over Ages
+    2. Consider the siblings as Relative
 */
 #ifndef LIFEGROWTH_H
 #define LIFEGROWTH_H

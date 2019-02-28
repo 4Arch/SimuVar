@@ -11,10 +11,6 @@
     Software distributed under the License is distributed on an "AS IS" BASIS,
     NO WARRANTIES OR CONDITIONS OF ANY KIND, explicit or implicit.
 **/
-/*
-TO UPGRADE
-        1. Consider the siblings as Relative
-*/
 #ifndef ENVIRONMENT_H
 #define ENVIRONMENT_H
 
