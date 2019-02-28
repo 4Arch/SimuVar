@@ -76,11 +76,12 @@ BookOfLife::iterator LifeGrowth::FindPeople(const FullGene& Genes2Search) {
 
 void LifeGrowth::FamilyTo(Person& Individual) {
 
-     if (Individual.CanIGetPregnant()) {
-        if (auto Father = Individual.Partner())
-        if (auto Child  = Individual.GiveBirth(Father->Sequence))
-            this->GrowingDPopulation(Child.value(), Individual, Father.value());
-
+     if (Individual.isFemale()) {
+        if (Individual.CanIGetPregnant()) {
+            if (auto Father = Individual.Partner())
+            if (auto Child  = Individual.GiveBirth(Father->Sequence))
+                this->GrowingDPopulation(Child.value(), Individual, Father.value());
+        }
      } else if (auto Bride = Individual.MayIPropose()) {
 
         if (auto BrideLocation = this->FindPeople(Bride.value()); BrideLocation != Population.cend() &&

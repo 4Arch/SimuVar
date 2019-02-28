@@ -21,7 +21,6 @@
 using namespace std;
 
 using Frequency     = uint32_t;
-using GeneFreq      = pair<GeneType, Frequency>;
 using ListOfGenes   = map<GeneType, Frequency>;
 
 using People        = uint32_t;
