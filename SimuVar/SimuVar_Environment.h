@@ -25,7 +25,7 @@ using NOfTwins = uint16_t;
 constexpr uint8_t GeneSubSegmentSize = sizeof(GeneType)*2;      //Every segment has 4bits doesn't matter the size of gene
 
 struct Environment {
-       uint32_t NumberOfGenerations = 10'000;
+       uint32_t NumberOfGenerations = 1'000;
        Meet InitialPopulation = 23;                                         //Minimum 2 Maximum 255
        Meet MeetingMaxPerGeneration = 5;                                    //Minimum 1 Maximum 255
        LifeTime MinAgeOfFertility = 18;

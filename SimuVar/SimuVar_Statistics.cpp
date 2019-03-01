@@ -1,7 +1,7 @@
 /**
     File    : SimuVar_Statistics.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.02.15            Version: 20190227.3
+    Created : 2019.02.15            Version: 20190227.4
 
     Simulation of Population Growth and Genetic Variation (סימולציה של גידול האוכלוסייה והשונות הגנטית)
 
@@ -52,8 +52,8 @@ Status DataStatistics::Current(const YearType CurrGeneration, const BookOfLife& 
        STATUS.Av_Age_Mens_Alive     = Average(Tot_Living_Men_Ages                        , STATUS.Tot_Men_Alive);
        STATUS.Av_Livings_Ages       = Average(Tot_Living_Women_Ages + Tot_Living_Men_Ages, Population.size());
 
-       STATUS.Av_Women_Alive        = Average(STATUS.Tot_Women_Alive                     , STATUS.Tot_Women_Alive + STATUS.Tot_Men_Alive);
-       STATUS.Av_Men_Alive          = Average(STATUS.Tot_Men_Alive                       , STATUS.Tot_Women_Alive + STATUS.Tot_Men_Alive);
+       STATUS.Av_Women_Alive        = Average(STATUS.Tot_Women_Alive                     , Population.size());
+       STATUS.Av_Men_Alive          = Average(STATUS.Tot_Men_Alive                       , Population.size());
 
        STATUS.Av_Couples            = Average(Tot_Couples                                , Population.size());
 
@@ -92,8 +92,8 @@ void DataStatistics::GrowthPopulation(const Person& Child) {
 
 void DataStatistics::Update_GenesDB(const Person& Child, const bool GrowthDecrease) {
      if (GrowthDecrease) {
-        if (auto Search = GenesAlive.try_emplace(GenesAlive.cbegin(), Child.Genes().Sequence, 0); Search != GenesAlive.cend())
-            Search->second++;
+        auto Search = GenesAlive.try_emplace(GenesAlive.cbegin(), Child.Genes().Sequence, 0);
+        Search->second++;
      } else {
         if (auto Search = GenesAlive.find(Child.Genes().Sequence); Search != GenesAlive.cend()) {
             if (Search->second == 1)
