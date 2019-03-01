@@ -14,7 +14,8 @@
 /*
     UPGRADES:
     1. Better randomization over Ages
-    2. Consider the siblings as Relative
+    2. Consider the siblings and children as Relative
+    3. add marginal evolution each year for Population and VarGen (Statistics)
 */
 #ifndef LIFEGROWTH_H
 #define LIFEGROWTH_H
