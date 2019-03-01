@@ -1,7 +1,7 @@
 /**
     File    : SimuVar_Person_Relationships.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.02.11            Version: 20190227.1
+    Created : 2019.02.11            Version: 20190302.1
 
     Simulation of Population Growth and Genetic Variation (סימולציה של גידול האוכלוסייה והשונות הגנטית)
 
@@ -14,18 +14,6 @@
 #include "SimuVar_Person.h"
 #include "SimuVar_Template_IsInRange.h"
 
-bool Person::GetAPartner(FullGene newPartner) {
-     if (this->PartnerGenes.has_value()) return false;
-
-     this->PartnerGenes.emplace(newPartner);
-
-     return true;
-}
-
-optional<FullGene> Person::Partner() const {
-     return this->PartnerGenes;
-}
-
 template<template<typename...> typename TContainer, typename TObject>
 auto Person::FindKnownPerson(const FullGene& Genes2Search, const TContainer<TObject>& Container) const {
 
@@ -37,6 +25,21 @@ auto Person::FindKnownPerson(const FullGene& Genes2Search, const TContainer<TObj
                 return TwinTwin;
 
      return Container.cend();
+}
+
+bool Person::GetAPartner(FullGene newPartner) {
+     if (this->PartnerGenes.has_value() ||
+         FindKnownPerson(newPartner, this->Relatives) != this->Relatives.cend())
+        return false;
+
+
+     this->PartnerGenes.emplace(newPartner);
+
+     return true;
+}
+
+optional<FullGene> Person::Partner() const {
+     return this->PartnerGenes;
 }
 
 bool Person::MeetNewFriend(const FullGene& newFriend) {
