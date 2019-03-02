@@ -1,7 +1,7 @@
 /**
     File    : SimuVar_Environment.h
     Author  : Menashe Rosemberg
-    Created : 2019.02.10            Version: 20190214.3
+    Created : 2019.02.10            Version: 20190214.4
 
     Simulation of Population Growth and Genetic Variation (סימולציה של גידול האוכלוסייה והשונות הגנטית)
 
@@ -37,5 +37,7 @@ struct Environment {
        float InitialWilling2Marry = 0.9;
        float MaxDecayofWillingness2MarryPerGeneration[2] = {0.001, 0.005};  //Male-Female
 };
+
+Environment  FullfilEnvData();
 
 #endif // ENVIRONMENT_H

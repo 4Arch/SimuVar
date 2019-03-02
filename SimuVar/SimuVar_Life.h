@@ -15,7 +15,6 @@
     UPGRADES:
     1. Better randomization over Ages
     2. Consider the siblings as Relative
-    3. add marginal evolution each year for Population and Genetic Variation (GenVar) (Statistics)
 */
 #ifndef LIFEGROWTH_H
 #define LIFEGROWTH_H

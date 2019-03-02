@@ -1,7 +1,7 @@
 /**
     File    : SimuVar_Statistics.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.02.15            Version: 20190227.4
+    Created : 2019.02.15            Version: 20190302.1
 
     Simulation of Population Growth and Genetic Variation (סימולציה של גידול האוכלוסייה והשונות הגנטית)
 
@@ -16,9 +16,21 @@
 DataStatistics::DataStatistics() = default;
 DataStatistics::~DataStatistics() = default;
 
+constexpr float Average(const float CurrValue, const float newUnit, const float Pop) {
+          return (CurrValue * Pop + newUnit) / (Pop + 1.0); }
+
+constexpr float Average(const float Value, const float Pop) {
+          return Pop ? (Value / Pop) : 0.0; }
+
+constexpr float Marginal(const float LastY, const float Actual) {
+          return (Actual - LastY) / Actual; }
+
 Status DataStatistics::Current(const YearType CurrGeneration, const BookOfLife& Population) {
        STATUS.Generation        = CurrGeneration;
        STATUS.Av_Souls_Ages     = this->Av_Souls_Ages();
+
+       STATUS.Growth_GenVar     = Marginal(STATUS.GeneticVariation                      , GenesAlive.size());
+       STATUS.Growth_Population = Marginal(STATUS.Tot_Women_Alive + STATUS.Tot_Men_Alive, Population.size());
 
        STATUS.GeneticVariation  = GenesAlive.size();
 

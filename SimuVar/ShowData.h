@@ -1,7 +1,7 @@
 /**
     File    : Main.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.02.18            Version: 20190218.1
+    Created : 2019.02.18            Version: 20190302.1
 
     Simulation of Population Growth and Genetic Variation (סימולציה של גידול האוכלוסייה והשונות הגנטית)
 
@@ -27,7 +27,7 @@ class ShowTime {
          cout << setw(Width) << Value << ' '; }
     void ShowAverage(uint16_t Width, float Value) {
          cout << fixed << setprecision(1) << setw(Width) << Value << ' '; }
-    void ShowAvePer(float Value) {
+    void ShowPercent(float Value) {
          cout << fixed << setprecision(1) << setw(5) << (Value*100) << ' '; }
 
     public:
@@ -42,10 +42,10 @@ class ShowTime {
                 cin.get();
              }
              if (Generation % ShowHeader == 0)
-                cout << "\n\n--------------------------------------------------------------------------------------------------------------------------------------|"
-                     << "\n     |      |          Population              |   Women Alive    |     Men Alive    |        |  Women Deceased   |    Men Deceased   |"
-                     << "\nYear |VarGen| Alive |AvAge|Coup%|Relat| Mates  | Tot. |Aver%|AvAge| Tot. |Aver%|AvAge|Deceased| Total |Aver%|AvAge| Total |Aver%|AvAge|"
-                     << "\n--------------------------------------------------------------------------------------------------------------------------------------|"
+                cout << "\n\n--------------------------------------------------------------------------------------------------------------------------------------------------|"
+                     << "\n     |      |          Population              |   Women Alive    |     Men Alive    |        |  Women Deceased   |    Men Deceased   |  Growth   |"
+                     << "\nYear |VarGen| Alive |AvAge|Coup%|Relat| Mates  | Tot. |Aver%|AvAge| Tot. |Aver%|AvAge|Deceased| Total |Aver%|AvAge| Total |Aver%|AvAge|G.V.%|Pop.%|"
+                     << "\n--------------------------------------------------------------------------------------------------------------------------------------------------|"
                      << flush;
 
              cout << '\n';
@@ -59,22 +59,24 @@ class ShowTime {
                  ShowVar(6,  STATUS.GeneticVariation);
                  ShowVar(7,  STATUS.Tot_Men_Alive + STATUS.Tot_Women_Alive);    //Total Population Alive
                  ShowAverage(5, STATUS.Av_Livings_Ages);                        //Average of Population Age
-                 ShowAvePer (STATUS.Av_Couples);
+                 ShowPercent (STATUS.Av_Couples);
                  ShowAverage(5, STATUS.Av_Relatives);
                  ShowAverage(8, STATUS.Av_Friends);
                  ShowVar(6,  STATUS.Tot_Women_Alive);
-                 ShowAvePer( STATUS.Av_Women_Alive);
+                 ShowPercent( STATUS.Av_Women_Alive);
                  ShowAverage(5, STATUS.Av_Age_Womens_Alive);
                  ShowVar(6,  STATUS.Tot_Men_Alive);
-                 ShowAvePer( STATUS.Av_Men_Alive);
+                 ShowPercent( STATUS.Av_Men_Alive);
                  ShowAverage(5, STATUS.Av_Age_Mens_Alive);
                  ShowVar(8,  STATUS.Tot_Women_Souls + STATUS.Tot_Men_Souls);    //Deceased
                  ShowVar(7,  STATUS.Tot_Women_Souls);                           //Total Women Deceased
-                 ShowAvePer( STATUS.Av_Women_Souls);                            //Average Women Deceased
+                 ShowPercent( STATUS.Av_Women_Souls);                            //Average Women Deceased
                  ShowAverage(5, STATUS.Av_Age_Womens_Souls);                    //Average Age of Women Deceased
                  ShowVar(7,  STATUS.Tot_Men_Souls);                             //Total Men Deceased
-                 ShowAvePer( STATUS.Av_Men_Souls);                              //Average Men Decease
+                 ShowPercent( STATUS.Av_Men_Souls);                              //Average Men Decease
                  ShowAverage(5, STATUS.Av_Age_Mens_Souls);                      //Average Age of Men Deceased
+                 ShowPercent(STATUS.Growth_GenVar);
+                 ShowPercent(STATUS.Growth_Population);
                  cout << flush;
 
                  if ((STATUS.Tot_Men_Alive + STATUS.Tot_Women_Alive) == 0)
@@ -99,7 +101,7 @@ class ShowTime {
              ShowVar(6,  FINAL.MaxGeneticVariation);
              ShowVar(7,  FINAL.MaxPopulation);
              ShowAverage(5, FINAL.MaxAvAge);
-             ShowAvePer (FINAL.MaxAvCouples);
+             ShowPercent (FINAL.MaxAvCouples);
              ShowAverage(8, FINAL.MaxAvFamilySize);
              ShowAverage(8, FINAL.MaxAvFriendsSize);
 

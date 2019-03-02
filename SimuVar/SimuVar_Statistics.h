@@ -1,7 +1,7 @@
 /**
     File    : SimuVar_Statistics.h
     Author  : Menashe Rosemberg
-    Created : 2019.02.15            Version: 20190227.1
+    Created : 2019.02.15            Version: 20190302.1
 
     Simulation of Population Growth and Genetic Variation (סימולציה של גידול האוכלוסייה והשונות הגנטית)
 
@@ -23,14 +23,6 @@
 constexpr bool GROWTH   = true;
 constexpr bool DECREASE = false;
 
-constexpr float Average(float CurrValue, float newUnit, float Pop) {
-          return (CurrValue * Pop + newUnit) / (Pop + 1.0);
-}
-
-constexpr float Average(float Value, float Pop) {
-          return Pop ? (Value / Pop) : 0.0;
-}
-
 struct DataStatistics {
        DataStatistics();
       ~DataStatistics();
@@ -44,7 +36,7 @@ struct DataStatistics {
         Status STATUS;
         FinalStatus FINALSTATUS;
 
-         ListOfGenes GenesAlive;
+        ListOfGenes GenesAlive;
 
         float Av_Souls_Ages() const;
 

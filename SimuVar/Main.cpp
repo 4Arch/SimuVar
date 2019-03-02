@@ -1,7 +1,7 @@
 /**
     File    : Main.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.02.10            Version: 20190219.2
+    Created : 2019.02.10            Version: 20190219.3
 
     Simulation of Population Growth and Genetic Variation (סימולציה של גידול האוכלוסייה והשונות הגנטית)
 
@@ -12,13 +12,12 @@
     NO WARRANTIES OR CONDITIONS OF ANY KIND, explicit or implicit.
 **/
 #include "../../C++_lib/ReadConfigurations/ReadConfigurations.h"
+#include "SimuVar_Environment.h"
 #include "SimuVar_Life.h"
 #include "SimuVar_Statistics_Results.h"
 #include "ShowData.h"
 
 #include <iostream>
-
-Environment  FullfilEnvData();
 
 int main() {
     try {

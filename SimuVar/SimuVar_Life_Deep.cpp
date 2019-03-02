@@ -103,8 +103,13 @@ void LifeGrowth::GrowingDPopulation(const GeneType ChildGenesSeq, Person& Mother
 
      this->AdamVeHavah(ChildGenesSeq);
 
-     Population.front().MeetNewRelative(Mother.Genes());
-     Population.front().MeetNewRelative(Father);
+     thread([&](){  Person& Front = Population.front();
+                    Person& mother = Mother;
+                    const FullGene& father = Father;
+
+                    Front.MeetNewRelative(mother.Genes());
+                    Front.MeetNewRelative(father);
+     }).detach();
 
      Mother.MeetNewRelative(Population.front().Genes());
      if (auto theFather = this->FindPeople(Father); theFather != Population.cend())
