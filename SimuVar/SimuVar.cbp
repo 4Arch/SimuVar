@@ -22,6 +22,7 @@
 				<Linker>
 					<Add option="-s" />
 					<Add option="-m64" />
+					<Add option="-lstdc++fs" />
 					<Add option="-pthread" />
 				</Linker>
 			</Target>
@@ -30,13 +31,12 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="../../C++_lib/Is_Number/Is_Number.cpp" />
-		<Unit filename="../../C++_lib/Is_Number/Is_Number.h" />
-		<Unit filename="../../C++_lib/ReadConfigurations/ReadConfigurations.cpp" />
-		<Unit filename="../../C++_lib/ReadConfigurations/ReadConfigurations.h" />
-		<Unit filename="../../C++_lib/SpinLock/SpinLock.h" />
+		<Unit filename="Is_Number.cpp" />
+		<Unit filename="Is_Number.h" />
 		<Unit filename="Main.cpp" />
 		<Unit filename="Main_Load_Environment.cpp" />
+		<Unit filename="ReadConfigurations.cpp" />
+		<Unit filename="ReadConfigurations.h" />
 		<Unit filename="ShowData.h" />
 		<Unit filename="SimuVar.conf" />
 		<Unit filename="SimuVar_DataBase.h" />
@@ -51,6 +51,7 @@
 		<Unit filename="SimuVar_Statistics.h" />
 		<Unit filename="SimuVar_Statistics_Results.h" />
 		<Unit filename="SimuVar_Template_IsInRange.h" />
+		<Unit filename="SpinLock.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />
